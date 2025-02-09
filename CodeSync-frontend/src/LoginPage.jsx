@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Lottie from "lottie-react"; // Correct import
-import animationData from "./myanimation.json"; // Ensure this exists in the same folder
+import animationData from "./anime1.json"; // Ensure this exists in the same folder
 import { useNavigate } from "react-router-dom";
 
 const LoginPage = () => {
@@ -26,29 +26,37 @@ const LoginPage = () => {
   };
 
   return (
-    <div className="relative h-screen w-screen flex items-center justify-center">
-      <div className="absolute inset-0 -z-10 flex items-center justify-center">
+    <div className="relative h-screen w-screen flex items-center justify-center overflow-hidden">
+      <div className="absolute inset-0 -z-10">
         <Lottie
           animationData={animationData}
           loop
-          className="w-full h-full scale-150"
+          className="absolute top-1/2 left-1/2 w-[250%] h-[250%] transform -translate-x-1/2 -translate-y-1/2 scale-[1.5] object-cover"
         />
       </div>
 
-      <div
+      {/* <div
         className="absolute top-20 left-[50%] transform -translate-x-1/2 text-6xl font-extrabold z-10"
         style={{
-          color: "#708090",
+          color: "#6EE7B7",
+          fontFamily: "sans-serif",
           textShadow: "0 0 5px #F0F8FF, 0 0 15px #FF4500, 0 0 30px #F0F8FF",
           animation: "glow 3s ease-in-out infinite",
         }}
       >
         CODESYNC
-      </div>
+      </div> */}
 
       <div className="bg-white/80 dark:bg-gray-900/70 shadow-2xl rounded-2xl p-10 w-full max-w-lg backdrop-blur-sm">
-        <h1 className="text-3xl font-extrabold text-gray-800 dark:text-white mb-6 text-center">
-          Welcome Back
+        <h1
+          className="text-6xl font-extrabold text-gray-800 dark:text-white mb-6 text-center"
+          style={{
+            color: "#1D4ED8",
+            textShadow: "0 0 5px #F0F8FF, 0 0 15px #FF4500, 0 0 30px #F0F8FF",
+            animation: "glow 3s ease-in-out infinite",
+          }}
+        >
+          CODESYNC
         </h1>
         <form onSubmit={handleLogin} className="space-y-6">
           <div>
@@ -107,7 +115,7 @@ const LoginPage = () => {
           )}
           <button
             type="submit"
-            className="w-full py-3 bg-gradient-to-r from-green-500 to-green-700 text-white rounded-lg shadow-md hover:from-green-600 hover:to-green-800 transition-all"
+            className="w-full py-3 bg-gradient-to-r from-[#C084FC] to-[#A463D8] text-white rounded-lg shadow-md hover:from-[#A463D8] hover:to-[#8A3BBF] transition-all"
           >
             Sign in
           </button>
