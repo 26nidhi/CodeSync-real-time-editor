@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Lottie from "lottie-react"; // Correct import
-import animationData from "./anime1.json"; // Ensure this exists in the same folder
+import animationData from "./anime4.json"; // Ensure this exists in the same folder
 import { useNavigate } from "react-router-dom";
 
 const LoginPage = () => {
@@ -31,7 +31,7 @@ const LoginPage = () => {
         <Lottie
           animationData={animationData}
           loop
-          className="absolute top-1/2 left-1/2 w-[250%] h-[250%] transform -translate-x-1/2 -translate-y-1/2 scale-[1.5] object-cover"
+          className="absolute top-1/2 left-1/2 w-[100%] h-[100%] transform -translate-x-1/2 -translate-y-1/2 scale-[1.5] object-cover"
         />
       </div>
 
