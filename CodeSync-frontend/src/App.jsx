@@ -2,7 +2,7 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
 import LoginPage from "./LoginPage"; // Example component
-import Dashboard from "./Dashboard"; // Example component
+import Dashboard from "./components/Dashboard"; // Example component
 import "./App.css";
 
 function App() {
