@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import Lottie from "lottie-react"; // Correct import
-import animationData from "./anime4.json"; // Ensure this exists in the same folder
+import Lottie from "lottie-react";
+import animationData from "./anime4.json";
 import { useNavigate } from "react-router-dom";
 
 const LoginPage = () => {
@@ -10,6 +10,7 @@ const LoginPage = () => {
   const navigate = useNavigate();
 
   const generateRoomLink = () => {
+    // In a real app, this would likely be an API call to a backend.
     const uniqueLink = `https://myapp.com/room/${Math.random()
       .toString(36)
       .substr(2, 9)}`;
@@ -18,10 +19,18 @@ const LoginPage = () => {
 
   const handleLogin = (e) => {
     e.preventDefault();
+
+    // **Important:**  You will need to replace this with *real* authentication.
+    // This is a simplified example.
+
     if (roomLink) {
-      navigate("/dashboard");
+      // You might want to store the roomLink in local storage
+      // sessionStorage.setItem("roomLink", roomLink); // Option 1: Session storage
+      // localStorage.setItem("roomLink", roomLink);   // Option 2: Local storage (more persistent)
+
+      navigate("/dashboard", { state: { roomLink } }); // Pass roomLink to Dashboard
     } else {
-      alert("Please generate a room link before logging in.");
+      alert("Please generate a room link before logging in."); // Better: use a more visual alert
     }
   };
 
@@ -34,18 +43,6 @@ const LoginPage = () => {
           className="absolute top-1/2 left-1/2 w-[100%] h-[100%] transform -translate-x-1/2 -translate-y-1/2 scale-[1.5] object-cover"
         />
       </div>
-
-      {/* <div
-        className="absolute top-20 left-[50%] transform -translate-x-1/2 text-6xl font-extrabold z-10"
-        style={{
-          color: "#6EE7B7",
-          fontFamily: "sans-serif",
-          textShadow: "0 0 5px #F0F8FF, 0 0 15px #FF4500, 0 0 30px #F0F8FF",
-          animation: "glow 3s ease-in-out infinite",
-        }}
-      >
-        CODESYNC
-      </div> */}
 
       <div className="bg-white/80 dark:bg-gray-900/70 shadow-2xl rounded-2xl p-10 w-full max-w-lg backdrop-blur-sm">
         <h1
