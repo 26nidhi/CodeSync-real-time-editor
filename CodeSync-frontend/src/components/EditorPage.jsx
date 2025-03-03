@@ -1,6 +1,5 @@
-
 import React, { useState, useEffect } from "react";
-import MonacoEditor from "@monaco-editor/react"; // Or your preferred Monaco Editor integration
+import MonacoEditor from "@monaco-editor/react";
 
 const Editor = ({ openFiles, activeFile, onCloseFile, onFileChange, setActiveFile }) => {
   const [editorValue, setEditorValue] = useState("");
@@ -26,7 +25,6 @@ const Editor = ({ openFiles, activeFile, onCloseFile, onFileChange, setActiveFil
 
   return (
     <div className="flex flex-col h-full">
-      {/* Tabs */}
       <div className="bg-gray-100 dark:bg-gray-700 flex items-center border-b border-gray-200 dark:border-gray-600">
         {openFiles.map((file) => (
           <div
@@ -42,7 +40,7 @@ const Editor = ({ openFiles, activeFile, onCloseFile, onFileChange, setActiveFil
             <button
               className="ml-2 text-gray-500 hover:text-gray-800 dark:text-gray-400 dark:hover:text-gray-200"
               onClick={(e) => {
-                e.stopPropagation(); // Prevent tab click
+                e.stopPropagation();
                 onCloseFile(file.name);
               }}
             >
@@ -51,16 +49,14 @@ const Editor = ({ openFiles, activeFile, onCloseFile, onFileChange, setActiveFil
           </div>
         ))}
       </div>
-
-      {/* Monaco Editor */}
       <div className="flex-grow">
         {activeFile ? (
           <MonacoEditor
-            height="100%" // Adjust as needed
+            height="100%"
             language={activeFile.language}
             value={editorValue}
             onChange={handleEditorChange}
-            theme="vs-dark" // You can dynamically set theme
+            theme="vs-dark"
           />
         ) : (
           <div className="flex items-center justify-center h-full text-gray-500 dark:text-gray-400">
