@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useLocation } from "react-router-dom"; // Import useLocation
+import { useLocation } from "react-router-dom";
 import Toolbar from "./toolbar";
 import Sidebar from "./sidebar";
 import Editor from "./EditorPage";
@@ -10,24 +10,16 @@ import StatusBar from "./Statusbar";
 const Dashboard = () => {
   const [openFiles, setOpenFiles] = useState([]);
   const [activeFile, setActiveFile] = useState(null);
-  const location = useLocation(); // Access the location object
-
-  // Access the roomLink from the location state
+  const location = useLocation();
   const roomLink = location.state?.roomLink;
 
   useEffect(() => {
-    // **Crucial: Validate the roomLink here!**
-    // In a real app, you would check with your backend that
-    // this roomLink is valid for the current user.
     if (roomLink) {
-      console.log("Room Link:", roomLink); // Or send to a function that validates it.
+      console.log("Room Link:", roomLink);
     } else {
-      // Handle the case where there's no roomLink.  Potentially redirect back to login.
-      console.warn("No room link provided.  User might not be logged in.");
-      // Example: navigate("/login");  // Redirect if no valid roomLink (requires navigate hook here)
+      console.warn("No room link provided. User might not be logged in.");
     }
-  }, [roomLink, location]); // location added as a dependancy
-
+  }, [roomLink]);
 
   const handleOpenFile = (file) => {
     if (!openFiles.some((f) => f.name === file.name)) {
@@ -53,15 +45,9 @@ const Dashboard = () => {
 
   return (
     <div className="h-screen w-screen flex flex-col dark:bg-gray-800 dark:text-white">
-      {/* Toolbar */}
       <Toolbar />
-
-      {/* Main Content Area */}
       <div className="flex flex-grow">
-        {/* Sidebar */}
         <Sidebar onOpenFile={handleOpenFile} />
-
-        {/* Editor Area */}
         <div className="flex-grow flex flex-col">
           <Editor
             openFiles={openFiles}
@@ -70,16 +56,10 @@ const Dashboard = () => {
             onFileChange={handleFileContentChange}
             setActiveFile={setActiveFile}
           />
-
-          {/* Output Terminal */}
           <OutputTerminal />
         </div>
-
-        {/* Live Chat */}
         <LiveChat />
       </div>
-
-      {/* Status Bar */}
       <StatusBar activeFile={activeFile} />
     </div>
   );

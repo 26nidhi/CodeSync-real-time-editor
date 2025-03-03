@@ -1,4 +1,3 @@
-
 import React from "react";
 
 const StatusBar = ({ activeFile }) => {
@@ -10,7 +9,6 @@ const StatusBar = ({ activeFile }) => {
             <span className="text-sm dark:text-white mr-2">
               File: {activeFile.name}
             </span>
-            {/* Add line/column number, etc. here */}
           </>
         ) : (
           <span className="text-sm text-gray-500 dark:text-gray-400">
@@ -19,7 +17,6 @@ const StatusBar = ({ activeFile }) => {
         )}
       </div>
       <div>
-        {/* Add Git branch, notifications here */}
         <span className="text-sm text-gray-500 dark:text-gray-400">
           Git Branch: main
         </span>
